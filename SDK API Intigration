@@ -1,0 +1,76 @@
+Integrate Facebook
+==================
+URL - https://developers.facebook.com
+project name - MyEventDemo
+Enter keystore password:  android
+ hash key - xiLdO3VWy6CfTY2x5nA5zPcd1kY=
+            xiLdO3VWy6CfTY2x5nA5zPcd1kY= 
+APP ID: 1247673148654557
+App Secret - ce22c9a06eba5693169328a8ee00b0be
+App id - 1247673148654557
+API Version -v2.8
+
+1->Create New Facebook App ID
+https://developers.facebook.com/
+-->Add Facebook SDK To Project
+ compile 'com.facebook.android:facebook-android-sdk:4.18.0'
+2-> Set Package Name And MainActivity Name Into Facebook Developer Panel
+3-> Generate Android Key Hash
+Generate an android key hash, which will ensure the authenticity of the integration of your App and Facebook.
+
+Open your Terminal(CMD) and run the given below command on Mac and any Linux OS to generate an android key hash.
+keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64<br />
+
+On Windows:
+keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64<br />
+example(for Win):
+keytool -exportcert -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore" | C:\OpenSSL-Win32\bin\openssl sha1 -binary | C:\OpenSSL-Win32\bin\openssl base64
+
+**Step for Generating HAsh Key:
+  1- Open CMD (Comand Promt)
+  2-  copy the JDK dir and 
+  3- make the dir - cd C:\Program Files\Java\jdk1.8.0_20\bin
+  4- then compile below command:
+  C:\Program Files\Java\jdk1.8.0_20\bin>keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+  Use this Command - [ C:\Program Files\Java\jdk1.8.0_20\bin>keytool -exportcert -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore" | C:\OpenSSL-Win32\bin\openssl sha1 -binary | C:\OpenSSL-Win32\bin\openssl base64 ]
+  5- Result show as follow :
+
+
+4->Add Android Key Hash Into Facebook Developer Panel
+5-> Add Repositories
+Add the given below line to Module-level /app/build.gradle before dependencies.
+repositories {
+  mavenCentral()
+}
+
+-> Add compile dependency
+Add the compile dependency with the latest version of the Facebook SDK in the /app/build.gradle file.
+compile 'com.facebook.android:facebook-android-sdk:4.6.0'<br />
+
+6-> Add Facebook App Id
+7-> Add Internet Permission
+Open your project’s AndroidManifest.xml file add the following.
+Add internet permission by adding uses-permission element to the manifest file.
+<uses-permission android:name=&quot;android.permission.INTERNET />
+
+
+
+
+Helping URL :(Reference)
+========================
+http://www.theappguruz.com/blog/android-facebook-integration-tutorial
+https://www.sitepoint.com/integrating-the-facebook-api-with-android/
+https://code.tutsplus.com/tutorials/quick-tip-add-facebook-login-to-your-android-app--cms-23837
+http://androidlift.info/2016/01/01/facebook-login-android-example/
+https://github.com/facebook/facebook-android-sdk
+
+
+Facebook Ad with App
+=====================
+https://developers.facebook.com/docs/android
+https://developers.facebook.com/docs/audience-network
+https://developers.facebook.com/docs/audience-network/android
+Started Android SDK - https://developers.facebook.com/docs/android/getting-started#release-key-hash
+Facebook Login for Android - https://developers.facebook.com/docs/facebook-login/android
+Quick Start for Android -  https://developers.facebook.com/quickstarts/1247673148654557/?platform=android
+			   https://developers.facebook.com/docs/android/getting-started#maven
